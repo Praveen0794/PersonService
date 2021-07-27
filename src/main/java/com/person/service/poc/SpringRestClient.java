@@ -15,33 +15,33 @@ import com.person.service.poc.dto.Person;
 
 public class SpringRestClient {
 
-	private static final String GET_PERSONS_ENDPOINT_URL = "http://localhost:8080/api/v1/employees";
-	private static final String GET_PERSON_ENDPOINT_URL = "http://localhost:8080/api/v1/employees/{id}";
-	private static final String CREATE_PERSON_ENDPOINT_URL = "http://localhost:8080/api/v1/employees";
-	private static final String UPDATE_PERSON_ENDPOINT_URL = "http://localhost:8080/api/v1/employees/{id}";
-	private static final String DELETE_PERSON_ENDPOINT_URL = "http://localhost:8080/api/v1/employees/{id}";
+	private static final String GET_PERSONS_ENDPOINT_URL = "http://localhost:8080/api/v1/persons";
+	private static final String GET_PERSON_ENDPOINT_URL = "http://localhost:8080/api/v1/persons/{id}";
+	private static final String CREATE_PERSON_ENDPOINT_URL = "http://localhost:8080/api/v1/persons";
+	private static final String UPDATE_PERSON_ENDPOINT_URL = "http://localhost:8080/api/v1/persons/{id}";
+	private static final String DELETE_PERSON_ENDPOINT_URL = "http://localhost:8080/api/v1/persons/{id}";
 	private static RestTemplate restTemplate = new RestTemplate();
 
 	public static void main(String[] args) {
 		SpringRestClient springRestClient = new SpringRestClient();
-		
-		// Step1: first create a new employee
-		springRestClient.createEmployee();
-		
-		// Step 2: get new created employee from step1
-		springRestClient.getEmployeeById();
-		
-		// Step3: get all employees
-		springRestClient.getEmployees();
-		
-		// Step4: Update employee with id = 1
-		springRestClient.updateEmployee();
-		
-		// Step5: Delete employee with id = 1
-		springRestClient.deleteEmployee();
+
+		// Step1: first create a new person
+		springRestClient.createperson();
+
+		// Step 2: get new created person from step1
+		springRestClient.getpersonById();
+
+		// Step3: get all persons
+		springRestClient.getpersons();
+
+		// Step4: Update person with id = 1
+		springRestClient.updateperson();
+
+		// Step5: Delete person with id = 1
+		springRestClient.deleteperson();
 	}
 
-	private void getEmployees() {
+	private void getpersons() {
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -53,7 +53,7 @@ public class SpringRestClient {
 		System.out.println(result);
 	}
 
-	private void getEmployeeById() {
+	private void getpersonById() {
 
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("id", "1");
@@ -64,7 +64,7 @@ public class SpringRestClient {
 		System.out.println(result);
 	}
 
-	private void createEmployee() {
+	private void createperson() {
 
 		Person newPerson = new Person("admin", "admin");
 
@@ -74,7 +74,7 @@ public class SpringRestClient {
 		System.out.println(result);
 	}
 
-	private void updateEmployee() {
+	private void updateperson() {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("id", "1");
 		Person updatedPerson = new Person("admin123", "admin123");
@@ -82,7 +82,7 @@ public class SpringRestClient {
 		restTemplate.put(UPDATE_PERSON_ENDPOINT_URL, updatedPerson, params);
 	}
 
-	private void deleteEmployee() {
+	private void deleteperson() {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("id", "1");
 		RestTemplate restTemplate = new RestTemplate();
